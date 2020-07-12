@@ -26,6 +26,7 @@ import m21 from './set-m21'
 import cube_gnt from './cube-gnt'
 import cube_vintage_2019 from './cube-vintage-2019'
 import cube_vintage_2020 from './cube-vintage-2020'
+import cube_custom from './cube-custom'
 
 import axios from 'axios'
  
@@ -54,7 +55,8 @@ const sets = {
   m21,
   cube_gnt,
   cube_vintage_2019,
-  cube_vintage_2020
+  cube_vintage_2020,
+  cube_custom
 }
 
 const cards_cache = {

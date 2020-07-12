@@ -122,6 +122,9 @@ export default {
           <option value="cube_gnt">
             Game Night Cube
           </option>
+          <option value="cube_custom">
+            Custom Cube
+          </option>
         </optgroup>
       </select>
     </div>
