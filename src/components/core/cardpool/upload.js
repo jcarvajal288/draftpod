@@ -16,7 +16,7 @@ export function handleCardpoolUpload(set_code, file, complete) {
   let extension = file.name.split('.').pop();
   if (extension.toLowerCase() === "coll2")
     return handleCardpoolColl2Upload(set_code, file, complete);
-    else if (extension.toLowerCase() === 'csv')
+  else if (extension.toLowerCase() === 'csv')
     return handleCardpoolCsvUpload(set_code, file, complete);
   else 
     return handleCardpoolDecklistUpload(set_code, file, complete);
@@ -142,6 +142,9 @@ export function handleCardpoolCsvUpload(set_code, file, complete) {
           quantity = card['Count'];
           if (quantity === undefined) {
             quantity = card['quantity'];
+            if (quantity === undefined) {
+              quantity = 1;
+            }
           }
         }
         return quantity;
@@ -270,8 +273,11 @@ function completeCardpoolUpload(set_code, cards, deckbox, complete) {
 
     // filter out cards that aren't in the set (record number of
     // cards before and after for validation)
-    const cardsInSet = set_cards.map((card) => card.id);
-    cards = cards.filter((card) => cardsInSet.includes(card.id));
+    // Skip this step if doing a custom cube
+    if (!set.name === "Custom Cube") {
+      const cardsInSet = set_cards.map((card) => card.id);
+      cards = cards.filter((card) => cardsInSet.includes(card.id));
+    }
     let total_cards = selectors.countCardpoolCards(cards);
 
     // establish how many cards we need for a standard 
@@ -305,7 +311,7 @@ function completeCardpoolUpload(set_code, cards, deckbox, complete) {
     } else {
       complete(null, status);
     }
-  });
+  }).catch(error => console.log(error.stack))
 
 }
 
