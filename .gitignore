@@ -36,3 +36,4 @@ selenium-server.log
 .firebaserc
 .firebase/*
 
+public/AllPrintings.sqlite
