@@ -1,8 +1,5 @@
 import sqlite3 from 'sqlite3'
 import { open } from 'sqlite'
-//const sqlite3 = require('sqlite3')
-//const sqlite = require('sqlite');
-//const open = sqlite.open
 
 async function fetch_set(set_code) {
   const path = require('path')
@@ -48,9 +45,8 @@ function construct_image_uri(scryfall_id) {
 }
 
 function remove_promos(card) {
-  // TODO: filter out if 'promoTypes' field exists
-  // TODO: This doesn't work!
-  return card.hasOwnProperty('promoTypes')
+  // TODO: filter out if 'promoTypes' field is populated
+  return card.promoTypes === null;
 }
 
 function fetch_rating(id) {
