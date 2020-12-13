@@ -31,6 +31,8 @@ import axios from 'axios'
  
 import { CARDPOOL } from '../../../constants'
 
+//import card_database from '../../../../src/core/card_database.js'
+
 const sets = {
   akh,
   aer,
@@ -139,6 +141,7 @@ export function cards(set_code) {
     return Promise.resolve(cards_cache[set_code]);
   } else {
     return axios.get('/sets/' + set_code + '/cards.json')
+    //return card_database.fetch_cards_for_set(set_code.toUpperCase())
       .then(response => {
         cards_cache[set_code] = response.data;
         return cards_cache[set_code];

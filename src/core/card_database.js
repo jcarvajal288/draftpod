@@ -59,6 +59,8 @@ function fetch_latent_color(id) {
   return null;
 }
 
+/*
 fetch_cards_for_set('M21').then((cards) => {
   console.log(cards);
 });
+*/
